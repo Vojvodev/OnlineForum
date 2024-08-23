@@ -1,0 +1,79 @@
+<div class="everything">
+
+    <div class="title">
+        {{category.toUpperCase()}}
+    </div>
+
+    <ul>
+        <li *ngFor="let comment of comments">
+            <strong> {{ comment.user.username }} </strong>: <br>
+            <span class="time"> {{ comment.createdAt }} </span>    
+            <br>
+                <span style="display: block;">  
+                    <ng-container *ngIf="!comment.editing; else editMode">
+                        {{ comment.text }} 
+
+                        <!-- DUGMICI  -->
+                        <span style="float: right; margin-right: 50px;">
+                            <svg (click)="onEditComment(comment)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil manage-comments" viewBox="0 0 16 16">
+                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                            </svg>
+
+                            <svg (click)="onDeleteComment(comment.id)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash manage-comments" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                            </svg>
+                        </span>
+                    </ng-container>
+
+                    <ng-template #editMode>
+                        <textarea
+                          [(ngModel)]="comment.text"
+                          (keydown.enter)="onSaveComment(comment)"
+                          (keydown.esc)="cancelChanges(comment)"
+                          (blur)="onSaveComment(comment)"
+                          rows="3"
+                          cols="50">
+                        </textarea>
+                        <span style="float: right; margin-right: 50px;">
+                          <svg (click)="onSaveComment(comment)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.707 5.707a1 1 0 0 0-1.414-1.414L8 6.586 6.707 5.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l3-3z"/>
+                          </svg>
+                        </span>
+                      </ng-template>
+                </span> 
+            <hr />
+        </li>
+    </ul>
+    
+    
+    <div class="next-prev">
+        <button class="btn btn-secondary" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 0">Previous</button>
+        <span style="padding-left: 5px; padding-right: 5px;">Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+        <button class="btn btn-secondary" (click)="goToPage(currentPage + 1)" [disabled]="currentPage + 1 === totalPages">Next</button>
+    </div>
+
+
+    <form (ngSubmit)="submitComment(f1)" #f1="ngForm">
+        <div class="mb-3 text-center pad-label">
+            <label for="newComment" class="form-label">Add a comment</label>
+        </div>
+        <div style="flex-direction: column; text-align: center;">
+            <div class="d-flex justify-content-center">
+                <input #u2="ngModel" type="text" name="newComment" class="form-control input me-2" id="newComment" placeholder="Your comment here..." ngModel required>
+                <button type="submit" class="btn btn-primary big-button" [disabled]="f1.invalid || currentUser == null || currentUser.permissionsList[categoryNumber].add === false">Submit</button>
+            </div>
+
+            <div class="error">
+                <span class="help-block" *ngIf="currentUser == null">*Log in to add a comment*</span>
+            </div>
+            <div class="error">
+                <span class="help-block" *ngIf="currentUser != null && currentUser?.permissionsList?.length && !currentUser?.permissionsList?.[categoryNumber]?.add">*You are not allowed to comment*</span>
+            </div>
+        </div>
+
+        
+    </form>
+
+
+</div>

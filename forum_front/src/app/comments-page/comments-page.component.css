@@ -1,0 +1,70 @@
+.everything{
+    min-height: 800px;
+}
+
+li, label{
+    color: #EEEEEE;
+}
+
+label{
+    font-size: 2vw;
+}
+
+.pad-label{
+    padding-top: 50px;
+}
+
+.title{
+    text-align: center;
+    font-family: "Shantell Sans", cursive;
+    font-optical-sizing: auto;
+    font-size: 5vw;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+    "BNCE" 0,
+    "INFM" 0,
+    "SPAC" 0;
+    color: #00ADB5;
+    user-select: none;
+    
+    padding-top: 80px;
+}
+
+.btn{
+    width: 120px;
+}
+
+.time{
+    color: #9c9c9c;
+}
+
+.input{
+    width: 50%;
+    margin-left: 0;
+    height: 50px;
+}
+
+.big-button{
+    width: 100px;
+    margin-top: 5px;
+
+    background-color: #00ADB5;
+}
+
+.next-prev{
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #EEEEEE;
+}
+
+.manage-comments{
+    cursor: pointer;
+    color: #00ADB5;
+    margin-left: 10px;
+}
+
+.error{
+    color: red;
+    padding-bottom: 10px;
+}

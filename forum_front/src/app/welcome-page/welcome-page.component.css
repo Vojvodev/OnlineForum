@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #393E46;
+
+    color: #00ADB5;
+}
+
+.title{
+    text-align: center;
+    font-family: "Shantell Sans", cursive;
+    font-optical-sizing: auto;
+    font-size: 10vw;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings:
+    "BNCE" 0,
+    "INFM" 0,
+    "SPAC" 0;
+
+    user-select: none;
+    padding-top: 200px;
+    padding-bottom: 80px;
+}
+
+.text-under{
+    text-align: center;
+    font-family: "Shantell Sans", cursive;
+    font-optical-sizing: auto;
+    font-size: 5vw;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+    "BNCE" 0,
+    "INFM" 0,
+    "SPAC" 0;
+
+    user-select: none;
+    margin-bottom: 200px;
+}
+
+
+.central-part{
+    width: 100%;
+    min-height: 800px;
+}
+
+.card-group h5{
+    text-align: center;
+    color: #EEEEEE;
+}
+.card-group p{
+    text-align: center;
+    color: #EEEEEE;
+}
+
+
+
+.card-img-top{
+    width: 200px;
+    height: 200px;
+}
+.card{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: none;
+}
+
+
+.card-group{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 150px;
+    padding-left: 150px;
+}
+
+a{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    padding-right: 90px;
+}
+
+.join-us-text{
+    text-align: center;
+    font-family: "Shantell Sans", cursive;
+    font-optical-sizing: auto;
+    font-size: 5vw;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+    "BNCE" 0,
+    "INFM" 0,
+    "SPAC" 0;
+
+    user-select: none;
+    margin-top: 80px;
+    margin-bottom: 120px;
+}
+
+.loginctn{
+    text-align: center;
+    padding-bottom: 280px;
+}
+
+.loginbtn{
+    font-size: 2vw;
+    min-width: 150px;
+    min-height: 75px;
+}
+.loginbtn1{
+    font-size: 2vw;
+    min-width: 350px;
+    min-height: 75px;
+}
+
+.oauth2{
+    display: inline-block;
+    text-align: center;
+    padding-left: 40px;
+}
+
+.or{
+    font-size: 2vw;
+    padding-left: 25px;
+    padding-right: 25px;
+}

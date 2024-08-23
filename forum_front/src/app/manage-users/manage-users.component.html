@@ -1,0 +1,93 @@
+<div class="everything">
+  <div class="title">
+      Manage Users
+  </div>
+
+  
+  <mat-card>
+      <mat-card-content>
+        <mat-table [dataSource]="users" class="mat-elevation-z8">
+          <ng-container matColumnDef="userName">
+            <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.username}} </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="email">
+              <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+              <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="roleColumn">
+            <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+            <mat-cell *matCellDef="let user" class="role-container">
+              <mat-form-field appearance="fill" style="margin-top: 5%;">
+                <mat-label>Select Role</mat-label>
+                <mat-select [(ngModel)]="user.role" (ngModelChange)="onRoleChange(user)">
+                  <mat-option value="USER">User</mat-option>              
+                  <mat-option value="MODERATOR">Moderator</mat-option>
+                  <mat-option value="ADMIN">Admin</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </mat-cell>
+          </ng-container>
+          
+          
+          <ng-container matColumnDef="sciencePermissions">
+            <mat-header-cell *matHeaderCellDef>Science Permissions</mat-header-cell>
+            <mat-cell *matCellDef="let user" class="permissions-container">
+              <div *ngIf="user.permissionsList[0]" class="checkbox-group">
+                  <mat-checkbox [(ngModel)]="user.permissionsList[0].add   " (ngModelChange)="onPermissionChange(user.id, 1, 'add'   )">  <span class="checkbox-label"> Add    </span> </mat-checkbox>
+                  <mat-checkbox [(ngModel)]="user.permissionsList[0].edit  " (ngModelChange)="onPermissionChange(user.id, 1, 'edit'  )">  <span class="checkbox-label"> Edit   </span> </mat-checkbox>
+                  <mat-checkbox [(ngModel)]="user.permissionsList[0].delete" (ngModelChange)="onPermissionChange(user.id, 1, 'delete')">  <span class="checkbox-label"> Delete </span> </mat-checkbox>
+              </div>
+            </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="culturePermissions">
+              <mat-header-cell *matHeaderCellDef>Culture Permissions</mat-header-cell>
+              <mat-cell *matCellDef="let user" class="permissions-container">
+                  <div *ngIf="user.permissionsList[1]" class="checkbox-group">
+                <mat-checkbox [(ngModel)]="user.permissionsList[1].add   " (ngModelChange)="onPermissionChange(user.id, 2, 'add'   )">    <span class="checkbox-label"> Add    </span> </mat-checkbox>
+                <mat-checkbox [(ngModel)]="user.permissionsList[1].edit  " (ngModelChange)="onPermissionChange(user.id, 2, 'edit'  )">    <span class="checkbox-label"> Edit   </span> </mat-checkbox>
+                <mat-checkbox [(ngModel)]="user.permissionsList[1].delete" (ngModelChange)="onPermissionChange(user.id, 2, 'delete')">    <span class="checkbox-label"> Delete </span> </mat-checkbox>
+                  </div>
+              </mat-cell>
+          </ng-container>
+  
+            <ng-container matColumnDef="sportPermissions">
+              <mat-header-cell *matHeaderCellDef>Sport Permissions</mat-header-cell>
+              <mat-cell *matCellDef="let user" class="permissions-container">
+                  <div *ngIf="user.permissionsList[2]" class="checkbox-group">
+                <mat-checkbox [(ngModel)]="user.permissionsList[2].add   " (ngModelChange)="onPermissionChange(user.id, 3, 'add'   )">   <span class="checkbox-label"> Add    </span> </mat-checkbox>
+                <mat-checkbox [(ngModel)]="user.permissionsList[2].edit  " (ngModelChange)="onPermissionChange(user.id, 3, 'edit'  )">   <span class="checkbox-label"> Edit   </span> </mat-checkbox>
+                <mat-checkbox [(ngModel)]="user.permissionsList[2].delete" (ngModelChange)="onPermissionChange(user.id, 3, 'delete')">   <span class="checkbox-label"> Delete </span> </mat-checkbox>
+                  </div>
+              </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="musicPermissions">
+              <mat-header-cell *matHeaderCellDef>Music Permissions</mat-header-cell>
+              <mat-cell *matCellDef="let user" class="permissions-container">
+                  <div *ngIf="user.permissionsList[3]" class="checkbox-group">
+                <mat-checkbox [(ngModel)]="user.permissionsList[3].add   " (ngModelChange)="onPermissionChange(user.id, 4, 'add'   )">   <span class="checkbox-label"> Add    </span> </mat-checkbox>
+                <mat-checkbox [(ngModel)]="user.permissionsList[3].edit  " (ngModelChange)="onPermissionChange(user.id, 4, 'edit'  )">   <span class="checkbox-label"> Edit   </span> </mat-checkbox>
+                <mat-checkbox [(ngModel)]="user.permissionsList[3].delete" (ngModelChange)="onPermissionChange(user.id, 4, 'delete')">   <span class="checkbox-label"> Delete </span> </mat-checkbox>
+                  </div>
+              </mat-cell>
+            </ng-container>
+    
+          <ng-container matColumnDef="activate">
+            <mat-header-cell *matHeaderCellDef> Blocked </mat-header-cell>
+            <mat-cell *matCellDef="let user" class="permissions-container">
+              <mat-checkbox [checked]="isBlocked(user.status)" (change)="toggleActive(user)"></mat-checkbox>
+            </mat-cell>
+          </ng-container>
+    
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </mat-card-content>
+  </mat-card>
+      
+  
+</div>

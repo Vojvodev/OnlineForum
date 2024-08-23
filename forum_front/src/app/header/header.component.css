@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #222831; 
+    
+
+    color: #EEEEEE;
+}
+
+.btn{
+    width: 8vw; 
+    height: 3vw;
+    margin-right: 10px;
+    border: none;
+    color: #00ADB5;
+
+    font-size: 22px;
+}
+
+
+.navbar{
+    align-items: center;
+    height: 6vw;
+    min-height: 50px;
+}
+
+li{
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    color: #EEEEEE;
+
+    margin: 5px 5px;
+}
