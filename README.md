@@ -1,2 +1,2 @@
 # OnlineForum
-Projekat urađen na predmetu sigurnost na internetu, 2024. godine.
+Projekat urađen na predmetu Sigurnost na internetu, 2024. godine.
